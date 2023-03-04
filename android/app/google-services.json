@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "688634511750",
+    "firebase_url": "https://trelloproject-62d92-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "trelloproject-62d92",
+    "storage_bucket": "trelloproject-62d92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688634511750:android:96ff671f342a29668e2c07",
+        "android_client_info": {
+          "package_name": "com.example.blog_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl8wabQC2yVvUmNpGrENXAjhyEZZj8hec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "688634511750-hsgrhntm1vcgsq14dm38407u8oehn59s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "android"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688634511750:android:e47dfc050035f3d88e2c07",
+        "android_client_info": {
+          "package_name": "com.example.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl8wabQC2yVvUmNpGrENXAjhyEZZj8hec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "688634511750-hsgrhntm1vcgsq14dm38407u8oehn59s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "android"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688634511750:android:60f868f4d50af3e88e2c07",
+        "android_client_info": {
+          "package_name": "com.example.flutter_animate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl8wabQC2yVvUmNpGrENXAjhyEZZj8hec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "688634511750-hsgrhntm1vcgsq14dm38407u8oehn59s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "android"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688634511750:android:259a22c88509c46a8e2c07",
+        "android_client_info": {
+          "package_name": "com.example.trelloproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl8wabQC2yVvUmNpGrENXAjhyEZZj8hec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688634511750-057avhq5ioomkvjiduhintu1esr541o8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "688634511750-hsgrhntm1vcgsq14dm38407u8oehn59s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "android"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
