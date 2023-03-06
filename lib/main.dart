@@ -1,31 +1,46 @@
 import 'dart:math' show pi;
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/Get_X/main_screen.dart';
 import 'package:flutter_animate/Get_X/second_screen.dart';
-import 'package:flutter_animate/animation/here_screen.dart';
-import 'package:flutter_animate/animation/twenn_color_builder.dart';
 import 'package:get/get.dart';
 
 import 'Get_X/constants/Languages.dart';
 import 'Get_X/counter_screen.dart';
+import 'helpers/notification_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  NotificationService notificationService = NotificationService();
+
+  @override
+  void initState() {
+    super.initState();
+    notificationService.requestPermission();
+    notificationService.getFcmToken();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(brightness: Brightness.dark),
-      locale: Locale('en', 'US'),
+      locale: const Locale('en', 'US'),
       translations: Languages(),
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
