@@ -1,9 +1,11 @@
 import 'dart:math' show pi;
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/Get_X/main_screen.dart';
 import 'package:flutter_animate/Get_X/second_screen.dart';
+import 'package:flutter_animate/sheets/google_sheets.dart';
 import 'package:get/get.dart';
 
 import 'Get_X/constants/Languages.dart';
@@ -13,8 +15,12 @@ import 'helpers/notification_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(backgroundMessageHandler);
   runApp(const MyApp());
 }
+
+@pragma('vm:entry-point')
+Future<void> backgroundMessageHandler(RemoteMessage message) async {}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -31,6 +37,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     notificationService.requestPermission();
     notificationService.getFcmToken();
+    notificationService.initFirebase();
+    notificationService.setupInteractMessage();
   }
 
   @override
@@ -45,7 +53,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: const MainScreen(),
+      home: const GoogleSheetsData(),
       getPages: [
         GetPage(name: "/", page: () => const MainScreen()),
         GetPage(name: "/second_page", page: () => const SecondScreen()),
