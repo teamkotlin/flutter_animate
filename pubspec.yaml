@@ -42,6 +42,9 @@ dependencies:
   flutter_local_notifications: ^13.0.0
   hive: ^2.2.3
   http: ^0.13.4
+  path_provider: ^2.0.13
+  swipeable_page_route: ^0.3.0
+
 
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -8,23 +9,33 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          hiveTest();
+        },
         child: const Icon(Icons.published_with_changes_sharp),
       ),
       appBar: AppBar(
         title: const Text('Get Tutorial'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            //showSnackBar();
-            //showAlertDialog();
-            //showGetBottomSheet();
-            nextPage();
-          },
-          child: const Text("Click Me"),
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          FutureBuilder(
+              future: Hive.openBox("myBox"),
+              builder: (context, snapshot) {
+                return Text("${snapshot.data!.get("details")["level"].toString()}");
+              }),
+          ElevatedButton(
+            onPressed: () {
+              //showSnackBar();
+              //showAlertDialog();
+              //showGetBottomSheet();
+              nextPage();
+            },
+            child: const Text("Click Me"),
+          ),
+        ],
       ),
     );
   }
@@ -76,5 +87,12 @@ class MainScreen extends StatelessWidget {
 
   nextPage() {
     Get.toNamed("/second_page", arguments: ["Get Navigation", "Go Back"]);
+  }
+
+  hiveTest() async {
+    var box = await Hive.openBox("myBox");
+    //box.put("name", "Muhammad Ramzan");
+    box.put("details", {"level": "Prov Level"});
+    debugPrint("name+=> ${box.get("name")}");
   }
 }

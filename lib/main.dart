@@ -5,8 +5,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/Get_X/main_screen.dart';
 import 'package:flutter_animate/Get_X/second_screen.dart';
-import 'package:flutter_animate/sheets/google_sheets.dart';
+import 'package:flutter_animate/signup_swipe_screens.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'Get_X/constants/Languages.dart';
 import 'Get_X/counter_screen.dart';
@@ -16,6 +18,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundMessageHandler);
+  var directory = await getApplicationDocumentsDirectory();
+  Hive.init(directory.path);
   runApp(const MyApp());
 }
 
@@ -53,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: const GoogleSheetsData(),
+      home: FirstPage(),
       getPages: [
         GetPage(name: "/", page: () => const MainScreen()),
         GetPage(name: "/second_page", page: () => const SecondScreen()),
