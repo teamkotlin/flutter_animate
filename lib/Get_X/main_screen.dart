@@ -1,12 +1,66 @@
+import 'dart:developer' as devtools show log;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+
+extension on Object {
+  void log() => devtools.log(toString());
+}
+
+abstract class CanRun {
+  final Type type;
+  const CanRun({required this.type});
+  // String get type {
+  //   if (this is Cat) {
+  //     return 'type is Cat';
+  //   } else {
+  //     return 'Something else';
+  //   }
+  // }
+
+  @mustCallSuper
+  void canRun() {
+    'CanRun runs is running'.log();
+  }
+}
+enum Type{
+  cat,
+  dog
+}
+class Cat extends CanRun {
+  const Cat():super(type: Type.cat);
+  @override
+  void canRun() {
+    super.canRun();
+  }
+}
+
+abstract class CanWalk{
+  canWalk(){
+    'can walk...'.log();
+  }
+}
+
+class Dog extends CanRun {
+  const Dog({required super.type});
+}
+
+void test() {
+  final cat = Cat();
+  cat.canRun();
+  cat.type.log();
+
+  final dog = Dog(type: Type.dog);
+  dog.type.log();
+}
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    test();
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -24,7 +78,8 @@ class MainScreen extends StatelessWidget {
           FutureBuilder(
               future: Hive.openBox("myBox"),
               builder: (context, snapshot) {
-                return Text("${snapshot.data!.get("details")["level"].toString()}");
+                return Text(
+                    "${snapshot.data!.get("details")["level"].toString()}");
               }),
           ElevatedButton(
             onPressed: () {

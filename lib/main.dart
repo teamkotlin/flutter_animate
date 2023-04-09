@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: FirstPage(),
+      home:const MainScreen(),
       getPages: [
         GetPage(name: "/", page: () => const MainScreen()),
         GetPage(name: "/second_page", page: () => const SecondScreen()),
