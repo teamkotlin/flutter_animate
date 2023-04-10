@@ -1,8 +1,11 @@
 import 'dart:developer' as devtools show log;
+import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+
+import '../network/api_service.dart';
 
 extension on Object {
   void log() => devtools.log(toString());
@@ -55,6 +58,7 @@ void test() {
   dog.type.log();
 }
 
+
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -82,11 +86,19 @@ class MainScreen extends StatelessWidget {
                     "${snapshot.data!.get("details")["level"].toString()}");
               }),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async{
               //showSnackBar();
               //showAlertDialog();
               //showGetBottomSheet();
-              nextPage();
+//              nextPage();
+            'moving'.log();
+            'into data'.log();
+            final rp = ReceivePort();
+            await Isolate.spawn(ApiService().getData, rp.sendPort);
+            "data received".log();
+//            debugPrint('rp.first==>${await rp.first}');
+            'test'.log();
+            'moved'.log();
             },
             child: const Text("Click Me"),
           ),
