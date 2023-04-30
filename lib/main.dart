@@ -13,6 +13,7 @@ import 'package:path_provider/path_provider.dart';
 import 'Get_X/constants/Languages.dart';
 import 'Get_X/counter_screen.dart';
 import 'helpers/notification_service.dart';
+import 'login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home:const MainScreen(),
+      home:const LoginPage(),
       getPages: [
         GetPage(name: "/", page: () => const MainScreen()),
         GetPage(name: "/second_page", page: () => const SecondScreen()),
