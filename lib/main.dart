@@ -7,11 +7,13 @@ import 'package:flutter_animate/Get_X/main_screen.dart';
 import 'package:flutter_animate/Get_X/second_screen.dart';
 import 'package:flutter_animate/signup_swipe_screens.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'Get_X/constants/Languages.dart';
 import 'Get_X/counter_screen.dart';
+import 'animation_flutterway/constants.dart';
 import 'helpers/notification_service.dart';
 import 'login_page.dart';
 
@@ -50,7 +52,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(brightness: Brightness.dark),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.all(defaultPadding * 0.75),
+            shape: StadiumBorder(),
+            backgroundColor: primaryColor,
+          ),
+        ),
+      ),
       locale: const Locale('en', 'US'),
       translations: Languages(),
       fallbackLocale: const Locale('en', 'US'),

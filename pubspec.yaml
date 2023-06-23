@@ -44,6 +44,9 @@ dependencies:
   http: ^0.13.4
   path_provider: ^2.0.13
   swipeable_page_route: ^0.3.0
+  flutter_svg:
+  google_fonts:
+
 
 
 
@@ -73,6 +76,8 @@ flutter:
   #
   assets:
     - images/
+    - assets/images/
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
