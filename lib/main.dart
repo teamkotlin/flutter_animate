@@ -16,6 +16,7 @@ import 'Get_X/constants/Languages.dart';
 import 'Get_X/counter_screen.dart';
 import 'animation_flutterway/constants.dart';
 import 'animation_flutterway/text_home_screeen.dart';
+import 'dumy.dart';
 import 'helpers/notification_service.dart';
 import 'login_page.dart';
 
@@ -73,7 +74,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       //home:const LoginPage(),
-      home: TextHomeScreen(),
+      //home: TextHomeScreen(),
+      home: DumyScreen(),
       getPages: [
         GetPage(name: "/", page: () => const MainScreen()),
         GetPage(name: "/second_page", page: () => const SecondScreen()),
