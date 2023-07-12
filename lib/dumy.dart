@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/animation_flutterway/screens/home/home_screen.dart';
+import 'package:flutter_animate/animation_flutterway/text_home_screeen.dart';
 
 class DumyScreen extends StatefulWidget {
   const DumyScreen({Key? key}) : super(key: key);
@@ -9,39 +9,17 @@ class DumyScreen extends StatefulWidget {
 }
 
 class _DumyScreenState extends State<DumyScreen> {
-  _buildRoute() {
+  Route _buildRoute() {
     return PageRouteBuilder(
-        pageBuilder: (context, animation, secAnimation) => HomeScreen(),
+        pageBuilder: (context, animation, child) => const TextHomeScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(0.0, 1.0);
-          const end = Offset.zero;
-          const curve = Curves.ease;
-
-          final tween = Tween(begin: begin, end: end);
-          final curvedAnimation = CurvedAnimation(
-            parent: animation,
-            curve: curve,
-          );
-
-          return SlideTransition(
-            position: tween.animate(curvedAnimation),
-            child: child,
-          );
-        }
-        // transitionsBuilder: (context, animation, secAnimation, child) {
-        //   const begin = Offset(0.0, 1);
-        //   const end = Offset.zero;
-        //   var curve = Curves.ease;
-        //   var curveTween = CurveTween(curve: curve);
-        //   final tween = Tween<Offset>(begin: begin, end: end).chain(curveTween);
-        //
-        //   final offsetAnimation = animation.drive(tween);
-        //   return SlideTransition(
-        //     position: offsetAnimation,
-        //     child: child,
-        //   );
-        // },
-        );
+          final tween =
+              Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0, 0))
+                  .chain(CurveTween(curve: Curves.easeInOut));
+          final offsetTween = animation.drive(tween);
+          final curve = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+          return SlideTransition(position: tween.animate(curve), child: child);
+        });
   }
 
   @override
