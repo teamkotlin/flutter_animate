@@ -17,7 +17,8 @@ class _DumyScreenState extends State<DumyScreen> {
               Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0, 0))
                   .chain(CurveTween(curve: Curves.easeInOut));
           final offsetTween = animation.drive(tween);
-          final curve = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+          final curve =
+              CurvedAnimation(parent: animation, curve: Curves.easeInOut);
           return SlideTransition(position: tween.animate(curve), child: child);
         });
   }
@@ -49,8 +50,68 @@ class _DumyScreenState extends State<DumyScreen> {
                       Navigator.of(context).push(_buildRoute());
                     },
                     child: Text("Move to Next!")),
+                SizedBox(
+                  height: 50,
+                ),
+                DraggableCard(
+                    child: FlutterLogo(
+                  size: 128,
+                )),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DraggableCard extends StatefulWidget {
+  const DraggableCard({Key? key, required this.child}) : super(key: key);
+  final Widget child;
+
+  @override
+  State<DraggableCard> createState() => _DraggableCardState();
+}
+
+class _DraggableCardState extends State<DraggableCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  Alignment _dragAlignment = Alignment.center;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return GestureDetector(
+      onPanDown: (details) {
+        debugPrint("down=>$details");
+      },
+      onPanUpdate: (details) {
+        debugPrint("upd=>$details");
+      },
+      onPanEnd: (details) {
+        debugPrint("end=>$details");
+      },
+      onPanStart: (details) {
+        debugPrint("start=>$details");
+      },
+      child: Align(
+        child: Card(
+          child: Container(
+            child: widget.child,
           ),
         ),
       ),
